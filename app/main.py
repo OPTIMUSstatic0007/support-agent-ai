@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from app.api.routes.health import router as health_router
 from app.core.config import settings
 from app.core.logging import logger
+from app.core.exceptions import register_exception_handlers
 
 
 @asynccontextmanager

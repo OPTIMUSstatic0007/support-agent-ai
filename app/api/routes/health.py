@@ -9,19 +9,11 @@ router = APIRouter(
 )
 
 
-@router.get("/")
-async def health_check():
+@router.get("/", response_model=HealthResponse)
+async def health_check() -> HealthResponse:
     """
     Health check endpoint.
     """
-    return {
-        "status": "healthy",
-        "application": settings.app_name,
-        "version": settings.app_version,
-    }
-
-    @router.get("/", response_model=HealthResponse)
-    async def health_check() -> HealthResponse:
     return HealthResponse(
         status="healthy",
         application=settings.app_name,
